@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { data } from '../datos';
 
-const ProductList = ({
-    allProducts,
-    setAllProducts,
-    countProducts,
-    setCountProducts,
-    total,
-    setTotal,
-    products
+const ProductList = ({ 
+    allProducts, 
+    setAllProducts, 
+    countProducts, 
+    setCountProducts, 
+    total, 
+    setTotal, 
+    searchTerm // Añadido para la búsqueda
 }) => {
     const onAddProduct = product => {
         if (allProducts.find(item => item.id === product.id)) {
@@ -28,9 +28,14 @@ const ProductList = ({
         setAllProducts([...allProducts, { ...product, quantity: 1 }]);
     };
 
+    // Filtrar los productos según el término de búsqueda
+    const filteredProducts = data.filter(product =>
+        product.nameProduct.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className='container-items'>
-            {products.map(product => (
+            {filteredProducts.map(product => (
                 <div className='item' key={product.id}>
                     <figure>
                         <img src={product.img} alt={product.nameProduct} />

@@ -292,3 +292,175 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 8px;
 }
+
+.checkout {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #f9f9f9;
+}
+
+.checkout form div {
+    margin-bottom: 15px;
+}
+
+.checkout form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.checkout form input,
+.checkout form select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.checkout form button {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	width: 300px;
+	position: fixed;
+	right: 20px;
+	top: 20px;
+  }
+  
+  .cart h2 {
+	margin-bottom: 20px;
+  }
+  
+  .cart ul {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 20px 0;
+  }
+  
+  .cart li {
+	margin-bottom: 10px;
+  }
+  
+  .cart h3 {
+	margin-bottom: 20px;
+  }
+  
+  .cart button {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: #000;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+  }
+  
+  .cart button:hover {
+	background-color: #444;
+  }
+
+  /* Añadir el siguiente código al archivo CSS */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	margin-bottom: 30px;
+  }
+  
+  .header h1 {
+	font-size: 24px;
+	color: #333;
+  }
+  
+  .header input[type="text"] {
+	width: 300px;
+	padding: 5px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+  }
+
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+/* Estilos para las etiquetas y los campos de entrada */
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón de envío */
+form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos específicos para los campos de la tarjeta de crédito */
+.card-details {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.card-details div {
+    margin-bottom: 15px;
+}
+
+.card-details label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.card-details input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+  

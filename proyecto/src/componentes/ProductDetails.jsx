@@ -13,8 +13,13 @@ const ProductDetails = ({
     const { id } = useParams();
     const product = data.find(product => product.id === parseInt(id));
 
-    const onAddProduct = product => {
-        if (allProducts.find(item => item.id === product.id)) {
+    if (!product) {
+        return <div>Producto no encontrado</div>;
+    }
+
+    const onAddProduct = () => {
+        const foundProduct = allProducts.find(item => item.id === product.id);
+        if (foundProduct) {
             const products = allProducts.map(item =>
                 item.id === product.id
                     ? { ...item, quantity: item.quantity + 1 }
@@ -22,25 +27,21 @@ const ProductDetails = ({
             );
             setTotal(total + product.price);
             setCountProducts(countProducts + 1);
-            return setAllProducts([...products]);
+            setAllProducts([...products]);
+        } else {
+            setTotal(total + product.price);
+            setCountProducts(countProducts + 1);
+            setAllProducts([...allProducts, { ...product, quantity: 1 }]);
         }
-
-        setTotal(total + product.price);
-        setCountProducts(countProducts + 1);
-        setAllProducts([...allProducts, { ...product, quantity: 1 }]);
     };
-
-    if (!product) {
-        return <div>Producto no encontrado</div>;
-    }
 
     return (
         <div className='product-details'>
             <img className='ImgProduct' src={product.img} alt={product.nameProduct} />
             <h2>{product.nameProduct}</h2>
-            <p className='descripcion'>{product.description}</p>
+            <p>{product.description}</p>
             <p>Precio: ${product.price}</p>
-            <button onClick={() => onAddProduct(product)}>
+            <button onClick={onAddProduct}>
                 Añadir al carrito
             </button>
         </div>
