@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate en lugar de useHistory
+import { useNavigate } from 'react-router-dom'; 
 import './Register.css';
 
 const Register = () => {
@@ -7,7 +7,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Cambiado de useHistory a useNavigate
+  const navigate = useNavigate(); 
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -22,8 +22,12 @@ const Register = () => {
       return;
     }
 
-    // Aquí puedes agregar la lógica de registro
-    navigate('/login'); // Cambiado de history.push a navigate
+    // Guardar los datos en localStorage
+    const user = { email, password };
+    localStorage.setItem('user', JSON.stringify(user));
+
+    // Redirigir a la página de login
+    navigate('/login');
   };
 
   return (

@@ -16,9 +16,13 @@ const Login = ({ setIsAuthenticated }) => {
       return;
     }
 
-    if (email === 'test@example.com' && password === 'password') {
+    // Obtener los datos del usuario almacenados en localStorage
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    // Verificar si las credenciales coinciden
+    if (storedUser && storedUser.email === email && storedUser.password === password) {
       setIsAuthenticated(true); // Actualizar el estado de autenticación
-      navigate('/home');
+      navigate('/App'); // Redirigir a la página de inicio
     } else {
       setError('Credenciales inválidas');
     }
@@ -57,3 +61,4 @@ const Login = ({ setIsAuthenticated }) => {
 };
 
 export default Login;
+

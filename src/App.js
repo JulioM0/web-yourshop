@@ -7,7 +7,6 @@ import Cart from './componentes/cart';
 import Header from './componentes/Header';
 import Login from './Login';
 import Register from './Register';
-import Home from './componentes/Home'; // Crear este componente si no lo tienes aún
 
 const App = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -31,8 +30,22 @@ const App = () => {
           <Route
             path="/"
             element={
+              isAuthenticated ? <Navigate to="/home" /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/home"
+            element={
               isAuthenticated ? (
-                <Navigate to="/home" />
+                <ProductList
+                  allProducts={allProducts}
+                  setAllProducts={setAllProducts}
+                  countProducts={countProducts}
+                  setCountProducts={setCountProducts}
+                  total={total}
+                  setTotal={setTotal}
+                  searchTerm={searchTerm}
+                />
               ) : (
                 <Navigate to="/login" />
               )
@@ -41,24 +54,32 @@ const App = () => {
           <Route
             path="/product/:id"
             element={
-              <ProductDetails
-                allProducts={allProducts}
-                setAllProducts={setAllProducts}
-                countProducts={countProducts}
-                setCountProducts={setCountProducts}
-                total={total}
-                setTotal={setTotal}
-              />
+              isAuthenticated ? (
+                <ProductDetails
+                  allProducts={allProducts}
+                  setAllProducts={setAllProducts}
+                  countProducts={countProducts}
+                  setCountProducts={setCountProducts}
+                  total={total}
+                  setTotal={setTotal}
+                />
+              ) : (
+                <Navigate to="/login" />
+              )
             }
           />
           <Route
             path="/checkout"
             element={
-              <Checkout
-                allProducts={allProducts}
-                total={total}
-                clearCart={clearCart}
-              />
+              isAuthenticated ? (
+                <Checkout
+                  allProducts={allProducts}
+                  total={total}
+                  clearCart={clearCart}
+                />
+              ) : (
+                <Navigate to="/login" />
+              )
             }
           />
           <Route
@@ -70,8 +91,8 @@ const App = () => {
             element={<Register />}
           />
           <Route
-            path="/home"
-            element={<Home />}
+            path="*"
+            element={<Navigate to={isAuthenticated ? "/home" : "/login"} />}
           />
         </Routes>
       </div>
